@@ -1,0 +1,9 @@
+{
+  "job": {
+    "setting": {"speed": {"channel": 2}, "errorLimit": {"record": 0}},
+    "content": [{
+      "reader": {"name": "mysqlreader", "parameter": {"username": "your_mysql_user", "password": "your_mysql_password", "connection": [{"jdbcUrl": ["jdbc:mysql://your_mysql_host:3306/your_database?useUnicode=true&characterEncoding=utf8"], "table": ["order_detail"]}], "column": ["order_id", "user_id", "product_id", "quantity", "pay_amount", "order_status", "updated_at"]}},
+      "writer": {"name": "hdfswriter", "parameter": {"defaultFS": "hdfs://your_namenode:8020", "fileType": "text", "path": "/warehouse/ecommerce_dw/ods/ods_order/dt=${bizdate}", "fileName": "order", "fieldDelimiter": "\\t", "writeMode": "truncate", "column": [{"name": "order_id", "type": "string"}, {"name": "user_id", "type": "string"}, {"name": "product_id", "type": "string"}, {"name": "quantity", "type": "long"}, {"name": "pay_amount", "type": "double"}, {"name": "order_status", "type": "string"}, {"name": "updated_at", "type": "string"}]}}
+    }]
+  }
+}

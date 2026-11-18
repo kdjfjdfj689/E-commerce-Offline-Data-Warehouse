@@ -1,0 +1,9 @@
+{
+  "job": {
+    "setting": {"speed": {"channel": 2}, "errorLimit": {"record": 0}},
+    "content": [{
+      "reader": {"name": "mysqlreader", "parameter": {"username": "your_mysql_user", "password": "your_mysql_password", "connection": [{"jdbcUrl": ["jdbc:mysql://your_mysql_host:3306/your_database?useUnicode=true&characterEncoding=utf8"], "table": ["click_log"]}], "column": ["user_id", "product_id", "page", "event_time"]}},
+      "writer": {"name": "hdfswriter", "parameter": {"defaultFS": "hdfs://your_namenode:8020", "fileType": "text", "path": "/warehouse/ecommerce_dw/ods/ods_click_log/dt=${bizdate}", "fileName": "click", "fieldDelimiter": "\\t", "writeMode": "truncate", "column": [{"name": "user_id", "type": "string"}, {"name": "product_id", "type": "string"}, {"name": "page", "type": "string"}, {"name": "event_time", "type": "string"}]}}
+    }]
+  }
+}
